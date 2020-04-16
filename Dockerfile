@@ -3,7 +3,7 @@ FROM debian:9
 WORKDIR /root
 RUN apt-get update && apt-get install -y openjdk-8-jdk vim-tiny git curl wget
 RUN git clone https://github.com/eclipse/eclipse.jdt.ls.git
-RUN cd eclipse.jdt.ls && ./mvnw clean verify
+RUN cd eclipse.jdt.ls && git checkout 9d12fd5e4f84d65d24a1cb492d64fe43cffb8471 && ./mvnw clean verify
 # TODO these version strings will change
 WORKDIR /root/eclipse.jdt.ls/org.eclipse.jdt.ls.product/target/repository
 CMD java  -Declipse.application=org.eclipse.jdt.ls.core.id1 \
